@@ -66,18 +66,19 @@ searchBtn.addEventListener('click', () => {
         URL_USER = `https://65427cd9ad8044116ed373ff.mockapi.io/users/${searchInput.value}`;
         fetchData(URL_USER, getOptions)
         .then(data => {
-            htmlContentToAppend = ``;
-            results.innerHTML = "";
-            htmlContentToAppend += `
-            <li>ID: ${data.id}</li>
-            <li>Name: ${data.name}</li>
-            <li>Last Name: ${data.lastname}</li>
-            <br>
-            `;
-            results.innerHTML = htmlContentToAppend;
-        })
+            if(data != undefined){
+                htmlContentToAppend = ``;
+                results.innerHTML = "";
+                htmlContentToAppend += `
+                <li>ID: ${data.id}</li>
+                <li>Name: ${data.name}</li>
+                <li>Last Name: ${data.lastname}</li>
+                <br>
+                `;
+                results.innerHTML = htmlContentToAppend;
+            };       
+        });
     };
-        
 });
 
 postInputName.addEventListener('input', () => {
